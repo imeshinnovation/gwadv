@@ -1,0 +1,38 @@
+
+<div class="offcanvas offcanvas-start" id="gwadv">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">{{{config.title}}}</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="card">
+        <div class="card-body p-1">
+            <button class="btn btn-sm btn-dark w-100 mb-1 text-start" type="button" onclick="loadPage('/inicio');" data-bs-dismiss="offcanvas"><i class="fas fa-home fa-fw ms-3 me-2"></i>Página de Inicio</button>
+            {{#if (eq datos.roll 1)}}
+            <button class="btn btn-sm btn-dark w-100 mb-1 text-start" type="button" onclick="loadPage('/config');" data-bs-dismiss="offcanvas"><i class="fas fa-cogs fa-fw ms-3 me-2"></i>Configuración</button>
+            {{/if}}
+            <button class="btn btn-sm btn-dark w-100 text-start" type="button" onclick="loadPage('/logevent');" data-bs-dismiss="offcanvas"><i class="fas fa-bug fa-fw ms-3 me-2"></i>Log de Eventos</button>
+        </div>
+    </div> 
+  </div>
+  <div class="offcanvas-footer p-4">
+    <div class="card bg-user mb-2">
+      <div class="card-body bg-user">
+        <i class="fas fa-user fa-fw me-2"></i>{{datos.names}}
+        <br>
+        <i class="fas fa-envelope fa-fw me-2"></i>{{datos.email}}
+        
+      </div>
+    </div>
+    <button class="btn btn-danger w-100" onclick="location.href='/logout'"><i class="fas fa-sign-out fa-fw me-3"></i>Salir</button>
+  </div>
+</div>
+
+<nav class="navbar navbar-dark bg-transparent">
+  <div class="container">
+    <a class="navbar-brand" href="javascript:loadPage('/inicio');">{{{config.title}}}</a>
+    <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#gwadv">
+      <span class="navbar-toggler-icon text-white"></span>
+    </button>
+  </div>
+</nav>

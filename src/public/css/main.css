@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Regular.ttf');
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-color: #102030;
+    background-image: url('/images/Wallpaper.webp');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.stats {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: calc(100vh - 57px) !important;
+    background-color: #102030;
+    background-image: url('/images/stats.webp');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-main {
+    /*height: calc(100vh - 57px) !important;*/
+    height: auto;
+    padding: 0px;
+}
+
+.bordes {
+    border-radius: 0px 0px 5px 5px;
+}
+
+.bg-semitrans, .btn-semitrans {
+    background-color: rgba(100,100,230,1) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-semitrans:hover {
+    background-color: rgba(150,150,255,1) !important;
+    color: #FFFFFF !important;
+}
+
+.pt-x {
+    padding-top: 3px;
+}
+
+.offcanvas {
+    background-color: rgba(50,60,70,0.8);
+    width: 300px !important;
+    border: none !important;
+}
+
+.bg-user {
+    background-color: rgba(0,0,0,0);
+    color: #ffffff;
+    padding: 1px;
+}
+
+.login-form {
+    width: 370px;
+}
+
+.offcanvas-header {
+    border: none !important;
+    color: #ffffff !important;
+    height: 57px !important;
+}
+
+.offcanvas-body {
+    border: none !important;
+}
+
+.navbar-toggler {
+    outline: none !important;
+    border: 1px solid #000;
+}
+
+.navbar-toggler:hover {
+    outline:none !important;
+    border: 1px solid #000;
+}
+
+.navbar-toggler::after {
+    outline: none !important;
+    border: 1px solid #000;
+}
+
+.navbar-toggler::before {
+    outline: none !important;
+    border: 1px solid #000;
+}
+
+.navbar-toggler :focus {
+    outline: none;
+    border: 1px solid #000;
+}
+
+@media screen and (min-width:350px) {
+    .login-form {
+        width: 340px !important;
+    }
+}

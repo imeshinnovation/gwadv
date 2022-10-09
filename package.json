@@ -1,0 +1,37 @@
+{
+    "name": "gwadv-stack",
+    "version": "1.0.0",
+    "description": "Sistema de Gestión GWADV",
+    "main": "src/app.js",
+    "scripts": {
+        "dev": "nodemon ./src/app.js -e js,hbs,css",
+        "start": "pm2 start src/app.js --name gwadv --watch && pm2 save",
+        "stop": "pm2 stop gwadv && pm2 delete gwadv"
+    },
+    "keywords": [],
+    "author": "Alexander Rubio Caceres",
+    "license": "ISC",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.2.0",
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.20.0",
+        "bootstrap": "^5.2.1",
+        "bootstrap-table": "^1.21.1",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.1",
+        "express-flash-message": "^2.1.0",
+        "express-handlebars": "^6.0.6",
+        "express-session": "^1.17.3",
+        "express-session-sqlite": "^2.1.1",
+        "fs": "^0.0.1-security",
+        "jquery": "^3.6.1",
+        "morgan": "^1.10.0",
+        "nodemailer": "^6.8.0",
+        "odbc": "^2.4.6",
+        "passport": "^0.6.0",
+        "passport-local": "^1.0.0",
+        "path": "^0.12.7",
+        "popper.js": "^1.16.1",
+        "sqlite3": "^5.1.1"
+    }
+}

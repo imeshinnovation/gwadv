@@ -1,0 +1,134 @@
+<!-- <script src="/js/bootstrap-table.js"></script>
+<script src="/js/locale/bootstrap-table-es-MX.js"></script> -->
+
+<div class="p-3">
+    <div class="bg-semitrans w-100 h5 p-2 rounded text-uppercase mb-3">
+        <i class="fas fa-bug fa-fw me-3"></i>Configuración
+    </div>
+
+    <div class="card mb-3 shadow-sm">
+        <div class="card-header">
+            <div class="float-start"><i class="fas fa-users fa-fw me-2"></i>Usuarios</div>
+            <div class="float-end"><button class="btn btn-sm btn-semitrans m-0 pt-x pb-0 pe-2 ps-2"
+                    onclick="newUser('Agregar Nuevo Usuario');" title="Agregar Usuario"><i class="fas fa-plus fa-fw"></i></button></div>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" height="100%">
+                <thead class="table-dark">
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roll</th>
+                    <th scope="col"></th>
+                </thead>
+                <tbody>
+                    {{#each lista}}
+                    <tr>
+                        <td>{{names}}</td>
+                        <td>{{email}}</td>
+                        <td>
+                            {{#if (eq roll 1)}}
+                            Administrador
+                            {{else}}
+                            Auditor
+                            {{/if}}
+                        </td>
+                        <td style="width:110px; text-align:center;">
+                            <button class="btn btn-sm btn-success me-1 mb-1" onclick="updPasswd('{{id}}', '{{names}}');" title="Cambiar Contraseña"><i class="fas fa-key fa-fw"></i></button>
+                            {{#if (ne id 1)}}
+                            <button class="btn btn-sm btn-danger me-1 mb-1" onclick="delUser('{{id}}')" title="Eliminar Usuario"><i class="fas fa-trash fa-fw"></i></button>
+                            {{/if}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-3 shadow-sm">
+        <div class="card-header">
+            <div class="float-start"><i class="fas fa-tint fa-fw me-2"></i>Pozos</div>
+            <div class="float-end"><button class="btn btn-sm btn-semitrans m-0 pt-x pb-0 pe-2 ps-2" onclick="newPozo()" title="Agregar Pozo"><i
+                        class="fas fa-plus fa-fw"></i></button></div>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" height="100%">
+                <thead class="table-dark">
+                    <th scope="col">Nombre del Pozo</th>
+                    <th scope="col">Ubicación</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col"></th>
+                </thead>
+                <tbody>
+                    {{#each listap}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{ubicacion}}</td>
+                        <td>
+                            {{#if (eq estado 1)}}
+                            Activo
+                            {{else}}
+                            Inactivo
+                            {{/if}}
+                        </td>
+                        <td style="width:110px; text-align:center;">
+                            <button class="btn btn-sm btn-info me-1 mb-1" onclick="redoPozo('{{id}}', '{{estado}}');" title="Cambiar Estado"><i class="fas fa-recycle fa-fw"></i></button>
+                            <button class="btn btn-sm btn-danger me-1 mb-1" onclick="delPozo('{{id}}')" title="Eliminar Pozo"><i class="fas fa-trash fa-fw"></i></button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-3 shadow-sm">
+        <div class="card-header"><i class="fas fa-code fa-fw me-2"></i>Integración</div>
+        <div class="card-body p-1">
+            <div class="row p-0">
+                <div class="col-md-4 mb-2">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-link fa-fw me-2"></i>Conexión DSN</div>
+                        <div class="card-body">
+                            <textarea name="dsn" id="dsn" cols="30" rows="5" class="form-control" readonly>{{dsn.0.conexion}}</textarea>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group w-100">
+                                <button class="btn btn-info" onclick="$('#dsn').removeAttr('readonly');"><i class="fas fa-pen fa-fw me-2"></i>Editar</button>
+                                <button class="btn btn-success" onclick="saveDSN();"><i class="fas fa-save fa-fw me-2"></i>Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-database fa-fw me-2"></i>Query</div>
+                        <div class="card-body">
+                            <textarea name="query" id="query" cols="30" rows="5" class="form-control" readonly>{{query.0.cadena}}</textarea>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group w-100">
+                                <button class="btn btn-info" onclick="$('#query').removeAttr('readonly');"><i class="fas fa-pen fa-fw me-2"></i>Editar</button>
+                                <button class="btn btn-success" onclick="saveQUERY();"><i class="fas fa-save fa-fw me-2"></i>Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="float-start"><i class="fas fa-clock fa-fw me-2"></i>Disparadores</div>
+                            <div class="float-end">
+                                <button class="btn btn-sm btn-semitrans m-0 pt-x pb-0 pe-2 ps-2" onclick="newTrigger()" title="Agregar Disparador">
+                                    <i class="fas fa-plus fa-fw"></i>
+                                </button>
+                            </div>    
+                        </div>
+                        <div class="card-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
